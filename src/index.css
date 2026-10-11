@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════════════
+   prajolannamudu.com — "peach & green" design system
+   warm white canvas · peach warmth · deep green as the anchor
+   ═══════════════════════════════════════════════════════════════════ */
+
+@theme {
+  --color-bone: #ffffff;
+  --color-ink: #000000;
+}
+
+:root {
+  /* Monochrome. Tokens keep their original names so components need no
+     edits, but every value is now black / white / grey — the accent
+     colours are deliberately collapsed onto black rather than deleted. */
+
+  /* Surfaces */
+  --pa-bg: #ffffff;
+  --pa-bg-2: #ffffff;        /* was the peach band — now flat white */
+  --pa-bg-3: #f6f6f6;        /* was the green band — now a faint grey */
+  --pa-card: #ffffff;
+
+  /* Ink */
+  --pa-text: #000000;
+  --pa-muted: #3d3d3d;
+  --pa-dim: #6b6b6b;
+
+  --pa-line: rgba(0, 0, 0, 0.12);
+  --pa-line-2: rgba(0, 0, 0, 0.26);
+
+  /* Former peach — now greys for small labels and the progress hairline */
+  --pa-peach: #d4d4d4;
+  --pa-peach-soft: #f2f2f2;
+  --pa-peach-deep: #000000;
+
+  /* Former green — the primary: black buttons, black emphasis */
+  --pa-green: #000000;
+  --pa-green-deep: #000000;
+  --pa-green-soft: #f2f2f2;
+
+  --pa-display: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  /* Oversized display face, hero name only. */
+  --pa-mega: 'Anton', 'Arial Narrow', ui-sans-serif, sans-serif;
+  --pa-serif: 'Newsreader', Georgia, ui-serif, serif;
+  --pa-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --pa-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--pa-bg);
+    color: var(--pa-text);
+    font-family: var(--pa-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--pa-display);
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+
+  ::selection {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--pa-green);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+.pa-display { font-family: var(--pa-display); }
+.pa-mega {
+  font-family: var(--pa-mega);
+  font-weight: 400;          /* Anton ships a single weight */
+  text-transform: uppercase;
+  letter-spacing: -0.012em;
+  line-height: 0.82;
+  padding-top: 0.26em;
+  padding-bottom: 0.1em;
+}
+.pa-serif   { font-family: var(--pa-serif); }
+.pa-mono    { font-family: var(--pa-mono); }
+
+/* Soft peach→green wash, used behind the hero. */
+.pa-wash {
+  background:
+    radial-gradient(ellipse 60% 50% at 78% 12%, rgba(0, 0, 0, 0.05), transparent 62%);
+}
+
+/* Hairline grid, masked so it fades downward. */
+.pa-grid {
+  background-image:
+    linear-gradient(var(--pa-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--pa-line) 1px, transparent 1px);
+  background-size: 84px 84px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 30%, transparent 100%);
+  opacity: 0.6;
+}
+
+.pa-card {
+  border: 1px solid var(--pa-line);
+  background: var(--pa-card);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pa-card:hover {
+  border-color: rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px -24px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pa-card:hover { transform: none; }
+}
