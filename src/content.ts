@@ -197,6 +197,33 @@ export const building = {
   ],
 };
 
+/* ── Role models ──────────────────────────────────────────────────── */
+
+export interface RoleModel {
+  name: string;
+  /** Factual descriptor — dates and what they were known for. */
+  known: string;
+  /** Their own words. Short, attributed quotes only. */
+  quote: string;
+  /** Why they matter to Prajol. Edit freely — this is the personal part. */
+  why: string;
+}
+
+export const roleModels: RoleModel[] = [
+  {
+    name: "Steve Jobs",
+    known: "1955-2011 - co-founder of Apple, NeXT and Pixar",
+    quote: "Stay hungry. Stay foolish.",
+    why: "For the insistence that a product is not finished when it works, but when it is right - and that taste and engineering are the same discipline, not opposing ones.",
+  },
+  {
+    name: "A. P. J. Abdul Kalam",
+    known: "1931-2020 - aerospace scientist and 11th President of India",
+    quote: "Dream is not what you see in sleep.",
+    why: "For proving that a boy from a small town on the Indian coast can build things that reach orbit - and for staying a teacher through all of it.",
+  },
+];
+
 /* ── Images ───────────────────────────────────────────────────────── */
 
 export const images = {

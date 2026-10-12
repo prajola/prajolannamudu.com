@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Story from "@/components/Story";
 import Building from "@/components/Building";
+import Inspiration from "@/components/Inspiration";
 import Talk from "@/components/Talk";
 
 
@@ -23,6 +24,7 @@ export default function App() {
           <About />
           <Story />
           <Building />
+          <Inspiration />
           <Talk />
         </main>
       </div>
