@@ -30,7 +30,7 @@ export const person = {
     "AI & Cloud Infrastructure",
   ],
   /** The hero eyebrow, set uppercase and letterspaced above the name. */
-  headline: "Building deep tech product KubeGraf",
+  headline: "Building KubeGraf into a billion dollar company",
   /** Supporting line under the headline. */
   lede: "Co-founder and CPO of KubeGraf, out of Belfast. Building the autonomous SRE that finds the root cause in seconds and ships the fix - so engineers get their nights back.",
   email: "prajol@kubegraf.io",
