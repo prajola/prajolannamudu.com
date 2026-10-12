@@ -350,6 +350,22 @@ export const building = {
 
 /* ── Role models ──────────────────────────────────────────────────── */
 
+/**
+ * Credit for a portrait. Both photographs here are reused under licences
+ * that *require* visible attribution, so this is not decoration - the
+ * credit line in the Inspiration section is a condition of using them.
+ * Any portrait added later must carry one too.
+ */
+export interface ImageCredit {
+  /** Photographer or rights holder, as the licence requires it named. */
+  author: string;
+  /** Licence short name, e.g. "CC BY-SA 3.0". */
+  licence: string;
+  licenceUrl: string;
+  /** The file page it came from, so the claim can be checked. */
+  sourceUrl: string;
+}
+
 export interface RoleModel {
   name: string;
   /** Factual descriptor — dates and what they were known for. */
@@ -358,6 +374,12 @@ export interface RoleModel {
   quote: string;
   /** Why they matter to Prajol. Edit freely — this is the personal part. */
   why: string;
+  /** Portrait from /public. Panels render quote-only without one. */
+  image?: string;
+  /** WebP twin, served first via <picture>. */
+  imageWebp?: string;
+  /** Required whenever `image` is set — see ImageCredit. */
+  credit?: ImageCredit;
 }
 
 export const roleModels: RoleModel[] = [
@@ -366,12 +388,28 @@ export const roleModels: RoleModel[] = [
     known: "1955-2011 - co-founder of Apple, NeXT and Pixar",
     quote: "Stay hungry. Stay foolish.",
     why: "For the insistence that a product is not finished when it works, but when it is right - and that taste and engineering are the same discipline, not opposing ones.",
+    image: "/inspiration-steve-jobs.jpg",
+    imageWebp: "/inspiration-steve-jobs.webp",
+    credit: {
+      author: "Matthew Yohe",
+      licence: "CC BY-SA 3.0",
+      licenceUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Steve_Jobs_Headshot_2010-CROP.jpg",
+    },
   },
   {
     name: "A. P. J. Abdul Kalam",
     known: "1931-2020 - aerospace scientist and 11th President of India",
     quote: "Dream is not what you see in sleep.",
     why: "For proving that a boy from a small town on the Indian coast can build things that reach orbit - and for staying a teacher through all of it.",
+    image: "/inspiration-abdul-kalam.jpg",
+    imageWebp: "/inspiration-abdul-kalam.webp",
+    credit: {
+      author: "Government of India",
+      licence: "GODL-India",
+      licenceUrl: "https://data.gov.in/government-open-data-license-india",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:A._P._J._Abdul_Kalam.jpg",
+    },
   },
 ];
 
