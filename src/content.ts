@@ -60,7 +60,7 @@ export const bio = {
     "I'm a technology entrepreneur, deep-tech founder and product leader working at the intersection of artificial intelligence, cloud infrastructure, software engineering and business innovation. Originally from Nellore, Andhra Pradesh, India, and now professionally based in Belfast, Northern Ireland, I'm part of a new generation of entrepreneurs building technology ventures with international ambitions.",
     "With an academic background in Computer Science and professional exposure across cloud engineering, quality assurance, product development and technology operations, I've developed a multidisciplinary approach to building technology businesses.",
     "I completed my Bachelor of Technology in Computer Science and Engineering between 2019 and 2023, before a Master of Science in Computer Science at the University of Lancashire in 2024-2025. Alongside my academic work I gained practical experience in AWS cloud engineering, product improvement, quality assurance and technical operations.",
-    "Since February 2020 I've been associated with Yours Foundation as a Volunteer Coordinator and Organising Director, contributing to fundraising, food distribution, blood donation initiatives and community support.",
+    "Since February 2020 I've been Co-Founder and Director of Yours Foundation in Nellore - fundraising for underprivileged families, running the annual blood and blanket donation drive every January 1st, and distributing food to more than 800 families through the COVID-19 period.",
     "My entrepreneurial journey has involved exploring multiple business ideas, working across different startup functions, and developing an understanding of what it takes to build and commercialise a technology product.",
     "Beyond KubeGraf I'm associated with Orkastor, a technology venture exploring AI-powered cloud infrastructure and developer platforms.",
     "Based in Northern Ireland, I engage actively with the wider UK startup ecosystem - entrepreneurial networks, innovation communities, investors and business support organisations. My long-term ambition is to build globally relevant deep-tech companies and contribute to the next generation of intelligent infrastructure systems.",
@@ -72,80 +72,231 @@ export const bio = {
 
 export interface Chapter extends Todoable {
   /** Groups entries into acts in the timeline. */
-  era: "Roots" | "Craft" | "Ventures";
+  era: "Roots" | "Craft" | "Ventures" | "Ecosystem";
+  /** Period, e.g. "Jul 2025 - Present". Anchors the row. */
   when: string;
+  /** The role, or the milestone where there is no role. */
   title: string;
+  /** Company, school or organisation. Omitted for life events. */
+  org?: string;
+  /** Employment basis - Full-time, Internship, Freelance, Community. */
+  kind?: string;
+  /** Place, and remote/hybrid/on-site where it was stated. */
+  where?: string;
+  /** The entry in one or two sentences. Always shown. */
   body: string;
+  /** What the work actually involved. Shown beneath the body. */
+  points?: string[];
+  /** Still ongoing - marks the row with a filled dot. */
+  current?: boolean;
   /** Optional image from /public. Omitted entries render as text only. */
   image?: string;
 }
 
+/**
+ * The full record, in four acts. Roles, periods, locations and
+ * descriptions are as supplied from the LinkedIn profile; the repeated
+ * IT-support boilerplate that had accreted across the early QA entries
+ * is consolidated rather than restated four times.
+ */
+
 export const story: Chapter[] = [
+  /* ── Act 01 · Roots ─────────────────────────────────────────────── */
   {
     era: "Roots",
     when: "Early life",
-    title: "Roots in Nellore",
-    body: "Born and raised in Nellore, Andhra Pradesh, India - schooled there and through to a Bachelor's degree.",
+    title: "Born in Nellore",
+    where: "Nellore, Andhra Pradesh, India",
+    body: "Born and brought up in Nellore, on the Andhra Pradesh coast, and schooled there. Everything that came after started a long way from any technology capital.",
   },
   {
     era: "Roots",
     when: "2019 - 2023",
-    title: "BTech, Computer Science and Engineering",
-    body: "Bachelor of Technology in Computer Science and Engineering.",
+    title: "Bachelor of Technology, Computer Science and Engineering",
+    where: "Andhra Pradesh, India",
+    body: "Four years of computer science and engineering - the foundation in systems, networks and software that the rest of the work is built on.",
   },
   {
     era: "Roots",
-    when: "February 2020",
-    title: "Yours Foundation",
-    body: "Began an association with Yours Foundation as Volunteer Coordinator and Organising Director - fundraising, food distribution, blood donation drives and community support.",
+    when: "Feb 2020 - Present",
+    title: "Co-Founder & Director",
+    org: "Yours Foundation",
+    kind: "Full-time",
+    where: "Nellore, Andhra Pradesh, India",
+    body: "Co-founded Yours Foundation while still an undergraduate - fundraising to support underprivileged families in Nellore, and running the drives that followed.",
+    points: [
+      "Directed fundraising initiatives providing financial support to underprivileged families.",
+      "Organised the annual blood and blanket donation drive, held every January 1st.",
+      "Distributed food to 800+ families through the COVID-19 period, with a volunteer team.",
+      "Continuing blood donation and community health work as Organisational Director and Coordinator.",
+    ],
+    current: true,
+  },
+
+  /* ── Act 02 · Craft ─────────────────────────────────────────────── */
+  {
+    era: "Craft",
+    when: "Sep 2020 - Oct 2022",
+    title: "Product / Scrum Coordinator",
+    org: "Freelancer",
+    kind: "Freelance",
+    where: "Greater Bengaluru Area - Remote",
+    body: "Two years of client work alongside the degree: testing websites for small businesses, and learning to report findings to the person paying for them.",
+    points: [
+      "Website testing focused on UI and functionality, with cross-browser coverage and usability reporting.",
+      "Smoke testing before every client launch and version update.",
+      "Test case writing, defect reporting and Agile stand-ups.",
+      "Communicated results and improvement recommendations directly to clients.",
+    ],
   },
   {
     era: "Craft",
-    when: "2023",
-    title: "QA and product improvement at iSmile",
-    body: "Quality assurance and product improvement work - the first close look at how products actually fail in the hands of users.",
+    when: "Nov 2022 - Jan 2023",
+    title: "Product / QA - Cloud Associate",
+    org: "TechArk - Innovative Digital Solutions",
+    kind: "Internship",
+    where: "Malaysia - Remote",
+    body: "A first formal internship, and first contact with cloud infrastructure: functional and UI testing on internal applications, plus an AWS internship alongside it.",
+    points: [
+      "Executed functional and UI test scenarios; wrote test cases and defect reports.",
+      "Learned SDLC, STLC and Agile in practice - test prioritisation, defect severity, status reporting.",
+      "Worked with developers to reproduce issues, validate fixes and confirm closure.",
+      "AWS core services: IAM, EC2, S3, VPC, CloudWatch, auto scaling and load balancing.",
+    ],
   },
   {
     era: "Craft",
-    when: "2023 onwards",
-    title: "Cloud, support and product operations",
-    body: "Professional exposure across AWS cloud engineering, support, product and technology operations.",
+    when: "Jul 2023 - Sep 2023",
+    title: "QA / Product Improvement Specialist",
+    org: "iSmile Technologies",
+    kind: "Full-time",
+    where: "Hyderabad, Telangana, India - Hybrid",
+    body: "Manual testing across web application modules, built from requirement documents and wireframes - the first close look at how a product actually fails in a user's hands.",
+    points: [
+      "Functional, UI and regression testing across core application features; defects reported in Bugzilla.",
+      "Cross-browser verification on Chrome, Firefox and Edge for a consistent experience.",
+      "Infrastructure alongside the QA: AWS with Terraform, CloudWatch and CloudTrail, Azure Virtual Desktop, Microsoft 365, Windows Autopilot.",
+      "Administered Microsoft 365, Active Directory and VMware/Hyper-V systems; wrote the knowledge-base and troubleshooting guides the team ran on.",
+    ],
   },
   {
     era: "Craft",
     when: "2024 - 2025",
-    title: "MSc Computer Science, University of Lancashire",
-    body: "A move to the United Kingdom for a Master of Science in Computer Science.",
+    title: "MSc Computer Science",
+    org: "University of Lancashire",
+    where: "Preston, England, United Kingdom",
+    body: "The move from India to the United Kingdom, for a Master of Science in Computer Science - and the point at which the work turned from testing other people's products to building one.",
   },
   {
     era: "Craft",
     when: "2024 - 2025",
     title: "Student Ambassador",
+    org: "University of Lancashire",
+    where: "Preston, England, United Kingdom",
     body: "Student Ambassador and university volunteering alongside the MSc.",
   },
   {
+    era: "Craft",
+    when: "Oct 2024 - Dec 2025",
+    title: "Product / QA Lead",
+    org: "Finden",
+    kind: "Full-time",
+    where: "Greater London, England - Remote",
+    body: "Leading product and QA at an early-stage company, which in practice meant owning far more than the test plan.",
+    points: [
+      "Manual testing across functional, integration, UI and regression cycles, to comprehensive coverage.",
+      "Logged, tracked and retested defects in JIRA - reproducibility, severity classification, resolution.",
+      "Full Agile cadence: daily stand-ups, sprint planning, retrospectives and backlog grooming.",
+      "Prepared test data, validated QA and test deployments, and maintained documentation and summary reports in Confluence and SharePoint.",
+      "Also ran web development, research support and university customer acquisition - the reality of a small team.",
+    ],
+  },
+
+  /* ── Act 03 · Ventures ──────────────────────────────────────────── */
+  {
     era: "Ventures",
-    when: "2025 - 2026",
-    title: "Building ventures",
-    body: "Developing technology and startup ventures - exploring ideas, working across startup functions, and learning what commercialising a product really demands.",
+    when: "Jan 2025 - Sep 2026",
+    title: "Co-Founder",
+    org: "Orkastor",
+    kind: "Full-time",
+    where: "Greater London, England - Remote",
+    body: "Co-founded Orkastor - an AI-powered SRE platform for modern cloud infrastructure, built local-first so that data never leaves the environment it runs in. The AI SRE that never leaves your network.",
+    points: [
+      "Helping DevOps teams automatically detect, analyse and fix Kubernetes issues.",
+      "Local-first AI by design, so the cluster's data stays in the cluster.",
+      "Reimagining cloud operations around intelligent orchestration and autonomous debugging.",
+      "Mission: zero downtime, through AI-driven infrastructure reliability.",
+    ],
   },
   {
     era: "Ventures",
-    when: "1 March 2026",
-    title: "Orkastor Limited",
-    body: "Incorporated - a technology venture exploring AI-powered cloud infrastructure and developer platforms.",
+    when: "Jul 2025 - Present",
+    title: "Co-Founder & CPO",
+    org: "KubeGraf",
+    kind: "Full-time",
+    where: "Greater London, England - Remote",
+    body: "Launched KubeGraf, the flagship AI-powered Kubernetes incident intelligence platform that came out of Orkastor - and now own its product strategy, roadmap and AI-driven features.",
+    points: [
+      "Defined and executed product strategy, roadmap and AI-driven features, improving incident detection and resolution speed.",
+      "Led engineering, design and product teams to deliver enterprise-grade observability.",
+      "Secured early adopters, strategic partnerships and investor engagement, driving adoption and growth.",
+      "Positioned the company as a leader in cloud-native observability and incident intelligence, recognised across the tech ecosystem.",
+    ],
+    current: true,
   },
   {
     era: "Ventures",
-    when: "2026",
-    title: "KubeGraf launches",
-    body: "Product development, launch and commercialisation of KubeGraf - alongside engagement with the UK and Northern Ireland startup ecosystem.",
+    when: "Oct 2025 - Feb 2026",
+    title: "Co-Founder",
+    org: "ESTOSPACES",
+    kind: "Full-time",
+    where: "England, United Kingdom - Remote",
+    body: "Co-founded a PropTech startup, taking end-to-end ownership of product direction, hiring, marketing and business execution through the earliest stage.",
+    points: [
+      "Shaped product and business strategy from the start.",
+      "Translated real estate operational challenges into actionable product requirements and system designs.",
+      "Defined the product vision and turned business requirements into initial direction and workflows.",
+    ],
+  },
+
+  /* ── Act 04 · Ecosystem ─────────────────────────────────────────── */
+  {
+    era: "Ecosystem",
+    when: "Jul 2026 - Present",
+    title: "Member, Centre for SME & Enterprise Development",
+    org: "University of Lancashire",
+    kind: "Community",
+    where: "Preston, England - Remote",
+    body: "Member of a 1,900+ SME network focused on business growth, innovation and collaboration - engaging founders, industry professionals and academic experts through networking events, workshops and enterprise programmes, to build partnerships and market insight for KubeGraf.",
+    current: true,
   },
   {
-    era: "Ventures",
-    when: "October 2026",
-    title: "Present",
-    body: "Continuing as a technology entrepreneur and founder.",
+    era: "Ecosystem",
+    when: "Jul 2026 - Present",
+    title: "Startup Member",
+    org: "Startup Grind",
+    kind: "Community",
+    where: "Manchester Area, United Kingdom - Remote",
+    body: "Selected as a Startup Grind member - part of a global community of founders, investors and innovators.",
+    points: [
+      "Access to the international startup network and investor ecosystem.",
+      "Founder events, conferences and mentorship sessions.",
+      "Engaging global founders to scale KubeGraf.",
+    ],
+    current: true,
+  },
+  {
+    era: "Ecosystem",
+    when: "Aug 2026 - Present",
+    title: "Community Member, Barclays Eagle Labs",
+    org: "Barclays Innovation Hub powered by Eagle Labs",
+    kind: "Community",
+    where: "London Area, United Kingdom - Remote",
+    body: "Member of the Barclays Eagle Labs community - a UK entrepreneurial ecosystem supporting startups and scaleups through founder networking, mentoring, learning, events and growth programmes.",
+    points: [
+      "Connecting with founders, mentors, investors and industry experts while building and scaling KubeGraf.",
+    ],
+    current: true,
   },
 ];
 
