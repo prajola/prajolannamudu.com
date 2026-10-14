@@ -45,7 +45,7 @@ export default function Inspiration() {
   return (
     <Section id="inspiration" className="border-t" style={{ borderColor: "var(--pa-line)" }}>
       <Reveal>
-        <Eyebrow index="04">Inspiration</Eyebrow>
+        <Eyebrow index="05">Inspiration</Eyebrow>
         <div className="mt-5 grid gap-6 md:grid-cols-[1.2fr_minmax(0,1fr)] md:items-end md:gap-12">
           <h2
             className="pa-display font-semibold leading-[1.06] tracking-[-0.03em]"

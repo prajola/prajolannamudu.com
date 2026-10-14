@@ -1,8 +1,28 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Section, Reveal, Eyebrow, EASE } from "./ui";
+import {
+  Section,
+  Reveal,
+  Eyebrow,
+  EASE,
+  LinkedInIcon,
+  XIcon,
+  YouTubeIcon,
+  DiscordIcon,
+  InstagramIcon,
+} from "./ui";
 import { building } from "@/content";
 import { ArrowUpRight } from "lucide-react";
+import type { ReactNode } from "react";
+
+/** Matches the channel names in `building.social` to their glyphs. */
+const SOCIAL_ICONS: Record<string, ReactNode> = {
+  LinkedIn: <LinkedInIcon size={15} />,
+  X: <XIcon size={14} />,
+  Instagram: <InstagramIcon size={15} />,
+  YouTube: <YouTubeIcon size={16} />,
+  Discord: <DiscordIcon size={16} />,
+};
 
 /** The product's four stages, cycled in the workflow card. */
 const STAGES = ["Detect", "Understand", "Fix", "Verify"];
@@ -159,59 +179,112 @@ export default function Building() {
         ))}
       </div>
 
-      {/* Other ventures last — they close the section rather than
-          interrupting the KubeGraf story, and a single card now runs the
-          full width instead of sitting in half an empty two-column grid. */}
-      {building.also.length > 0 && (
+      {/* KubeGraf's own channels, not Prajol's — his sit in the contact
+          section at the foot of the page. Kept here so the two sets are
+          never confused for one another.
+
+          On black, because a line of pills against the section's own
+          background read as a footnote; the invitation to follow is
+          meant to be the thing you notice at the end of the section. */}
+      {building.social.length > 0 && (
         <Reveal>
-          <div className="mt-16 border-t pt-10" style={{ borderColor: "var(--pa-line)" }}>
-            <div className="pa-mono text-[10.5px] uppercase tracking-[0.2em]" style={{ color: "var(--pa-dim)" }}>
-              Also building
-            </div>
-            <div className="mt-6 grid gap-5">
-              {building.also.map((v) => {
-                const Tag = v.url ? "a" : "div";
-                return (
-                  <Tag
-                    key={v.name}
-                    {...(v.url ? { href: v.url, target: "_blank", rel: "noreferrer noopener" } : {})}
-                    className="group grid items-center gap-x-10 gap-y-3 rounded-[14px] border p-7 transition-colors sm:grid-cols-[220px_1fr] sm:p-8"
-                    style={{ borderColor: "var(--pa-line)", background: "var(--pa-card)" }}
+          <div className="mt-14 overflow-hidden rounded-[18px] p-8 sm:p-10" style={{ background: "#000" }}>
+            <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-14">
+              <div>
+                <div
+                  className="pa-mono text-[10.5px] uppercase tracking-[0.22em]"
+                  style={{ color: "rgba(255,255,255,0.45)" }}
+                >
+                  Follow along
+                </div>
+                <h3
+                  className="pa-display mt-3 font-semibold leading-[1.08] tracking-[-0.025em]"
+                  style={{ fontSize: "clamp(26px, 3.2vw, 38px)", color: "#fff" }}
+                >
+                  Follow {building.name}
+                </h3>
+                <p
+                  className="mt-3 max-w-md text-[15px] leading-relaxed"
+                  style={{ color: "rgba(255,255,255,0.6)" }}
+                >
+                  {building.socialLede}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-2.5 lg:justify-end">
+                {building.social.map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    /* The colour is a class, not an inline style: an
+                       inline `color` outranks any variant, so setting it
+                       there left the label white on the white hover
+                       background and invisible. */
+                    className="group inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2.5 text-[13.5px] text-white transition-colors hover:border-white hover:bg-white hover:text-black"
                   >
-                    <div>
-                      <h3
-                        className="pa-display text-[22px] font-semibold tracking-[-0.02em]"
-                        style={{ color: "var(--pa-text)" }}
-                      >
-                        {v.name}
-                      </h3>
-                      <div
-                        className="pa-mono mt-1.5 text-[10px] uppercase tracking-[0.18em]"
-                        style={{ color: "var(--pa-dim)" }}
-                      >
-                        {v.role}
-                      </div>
-                    </div>
-                    <div className="flex items-start justify-between gap-6">
-                      <p className="max-w-xl text-[14.5px] leading-relaxed" style={{ color: "var(--pa-muted)" }}>
-                        {v.body}
-                      </p>
-                      {v.url && (
-                        <ArrowUpRight
-                          size={17}
-                          aria-hidden="true"
-                          className="mt-0.5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                          style={{ color: "var(--pa-dim)" }}
-                        />
-                      )}
-                    </div>
-                  </Tag>
-                );
-              })}
+                    {SOCIAL_ICONS[s.name]}
+                    {s.name}
+                    <ArrowUpRight
+                      size={13}
+                      aria-hidden="true"
+                      className="opacity-55 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </Reveal>
       )}
+
+      {/* The company behind the product, closing the section.
+          kubegraf.io's own footer states this relationship, so it is
+          given as the attribution it is rather than filed under "also
+          building" as though it were a side project. */}
+      <Reveal>
+        <div className="mt-16 border-t pt-12" style={{ borderColor: "var(--pa-line)" }}>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+            <div>
+              {/* The attribution itself, set as a statement. */}
+              <p
+                className="pa-display font-semibold leading-[1.12] tracking-[-0.025em]"
+                style={{ fontSize: "clamp(24px, 3vw, 36px)", color: "var(--pa-text)" }}
+              >
+                {building.name} is a product of{" "}
+                <span className="pa-serif font-normal italic">{building.parent.name}</span>.
+              </p>
+              <div
+                className="pa-mono mt-4 text-[10.5px] uppercase tracking-[0.2em]"
+                style={{ color: "var(--pa-dim)" }}
+              >
+                {building.parent.tagline}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[15px] leading-relaxed" style={{ color: "var(--pa-muted)" }}>
+                {building.parent.body}
+              </p>
+              <a
+                href={building.parent.url}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="group mt-6 inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 text-[14px] font-medium transition-opacity hover:opacity-88"
+                style={{ background: "var(--pa-text)", color: "#fff" }}
+              >
+                orkastor.com
+                <ArrowUpRight
+                  size={15}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </Reveal>
     </Section>
   );
 }

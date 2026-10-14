@@ -169,6 +169,54 @@ export function LinkedInIcon({ size = 15 }: { size?: number }) {
   );
 }
 
+/** X (formerly Twitter) glyph. Supplied locally, as above. */
+export function XIcon({ size = 15 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.25 2.25h6.82l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.11z" />
+    </svg>
+  );
+}
+
+/** YouTube glyph. Supplied locally, as above. */
+export function YouTubeIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81ZM9.55 15.57V8.43L15.82 12z" />
+    </svg>
+  );
+}
+
+/** Discord glyph. Supplied locally, as above. */
+export function DiscordIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M20.32 4.57A19.8 19.8 0 0 0 15.43 3c-.21.38-.46.9-.63 1.3a18.3 18.3 0 0 0-5.6 0C9.03 3.9 8.77 3.38 8.56 3a19.74 19.74 0 0 0-4.9 1.57C.55 9.22-.3 13.76.13 18.24a19.9 19.9 0 0 0 6.05 3.07c.49-.67.92-1.38 1.3-2.13-.71-.27-1.4-.6-2.04-.99.17-.13.34-.26.5-.4a14.2 14.2 0 0 0 12.13 0l.5.4c-.65.39-1.33.72-2.05.99.37.75.81 1.46 1.3 2.13a19.87 19.87 0 0 0 6.05-3.07c.5-5.19-.86-9.69-3.55-13.67ZM8.02 15.49c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42 2.17 1.09 2.15 2.42c0 1.33-.95 2.42-2.15 2.42Zm7.96 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42 2.17 1.09 2.15 2.42c0 1.33-.95 2.42-2.15 2.42Z" />
+    </svg>
+  );
+}
+
 /**
  * Instagram glyph. Same reason as LinkedInIcon: lucide-react v1 dropped
  * every brand icon, so importing `Instagram` from it throws at module load
