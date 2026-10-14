@@ -121,7 +121,7 @@ export default function Events() {
   return (
     <Section id="events" style={{ background: "var(--pa-bg-3)" }}>
       <Reveal>
-        <Eyebrow index="05">Out in the ecosystem</Eyebrow>
+        <Eyebrow index="06">Out in the ecosystem</Eyebrow>
         <h2
           className="pa-display mt-5 max-w-3xl font-semibold leading-[1.06] tracking-[-0.03em]"
           style={{ fontSize: "clamp(30px, 4.2vw, 52px)", color: "var(--pa-text)" }}
