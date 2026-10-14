@@ -2,6 +2,8 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Story from "@/components/Story";
 import Building from "@/components/Building";
+import Videos from "@/components/Videos";
+import Events from "@/components/Events";
 import Talk from "@/components/Talk";
 
 
@@ -23,6 +25,8 @@ export default function App() {
           <About />
           <Story />
           <Building />
+          <Videos />
+          <Events />
           <Talk />
         </main>
       </div>
