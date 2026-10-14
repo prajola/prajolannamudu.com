@@ -157,10 +157,17 @@ export default function Videos() {
     (triggerRef.current as HTMLElement | null)?.focus?.();
   }, []);
 
+  /* border-t because Inspiration above is also white - without a rule
+     the two sections run together. Same treatment About and Inspiration
+     already use for a white-on-white boundary. */
   return (
-    <Section id="videos" style={{ background: "var(--pa-bg)" }}>
+    <Section
+      id="videos"
+      className="border-t"
+      style={{ background: "var(--pa-bg)", borderColor: "var(--pa-line)" }}
+    >
       <Reveal>
-        <Eyebrow index="04">On camera</Eyebrow>
+        <Eyebrow index="05">On camera</Eyebrow>
         <h2
           className="pa-display mt-5 max-w-3xl font-semibold leading-[1.06] tracking-[-0.03em]"
           style={{ fontSize: "clamp(30px, 4.2vw, 52px)", color: "var(--pa-text)" }}

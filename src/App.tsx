@@ -2,8 +2,8 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Story from "@/components/Story";
 import Building from "@/components/Building";
-import Videos from "@/components/Videos";
 import Inspiration from "@/components/Inspiration";
+import Videos from "@/components/Videos";
 import Events from "@/components/Events";
 import Talk from "@/components/Talk";
 
@@ -26,12 +26,8 @@ export default function App() {
           <About />
           <Story />
           <Building />
-          {/* Videos sits with Building on purpose - it is the same
-              subject ("KubeGraf, in motion"), so splitting them would
-              break the product thread. Inspiration and Events then move
-              from the work to the person and the world around it. */}
-          <Videos />
           <Inspiration />
+          <Videos />
           <Events />
           <Talk />
         </main>
